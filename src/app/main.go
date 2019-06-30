@@ -8,7 +8,3 @@ func main() {
 	metrics.Metrics()
 
 }
-
-
-
-
