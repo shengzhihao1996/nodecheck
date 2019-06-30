@@ -1,18 +1,18 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: aiops
+  name: nodecheck
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: aiops
+      app: nodecheck
   template:
     metadata:
       labels:
-        app: aiops
+        app: nodecheck
     spec:
       containers:
-      - image: aiops:release-1.0.0
+      - image: nodecheck:release-1.0.0
         imagePullPolicy: Always
-        name: aiops
+        name: nodecheck
