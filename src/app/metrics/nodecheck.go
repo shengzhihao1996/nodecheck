@@ -11,7 +11,7 @@ import (
 func nodecheck(name string, test int) {
 	defer panics()
 
-	pingtest := shell("ping -c1 " + name + ">/dev/null;echo -n $?")
+	//pingtest := shell("ping -c1 " + name + ">/dev/null;echo -n $?")
 
 	httptest := func(name string) string {
 		client := http.Client{
@@ -40,20 +40,20 @@ func nodecheck(name string, test int) {
 	if err == nil {
 		connection.Close()
 	}
-	if pingtest != "0" && httptest != "ok" && err != nil && test == 0 {
+	if  httptest != "ok" && err != nil && test == 0 {
 		go label(name, test+1)
 	}
-	if pingtest != "0" && httptest != "ok" && err != nil && test == 1 {
+	if  httptest != "ok" && err != nil && test == 1 {
 		go label(name, test+1)
 	}
-	if pingtest != "0" && httptest != "ok" && err != nil && test == 2 {
+	if  httptest != "ok" && err != nil && test == 2 {
 		go label(name, test+1)
 	}
-	if pingtest != "0" && httptest != "ok" && err != nil && test == 3 {
+	if  httptest != "ok" && err != nil && test == 3 {
 		go label(name, test+1)
 		go cmd(name)
 	}
-	if pingtest == "0" || httptest == "ok" || err == nil {
+	if  httptest == "ok" || err == nil {
 		go unlabel(name)
 	}
 }
